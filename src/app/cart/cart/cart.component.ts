@@ -1,7 +1,7 @@
 import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ICart } from '../../interfaces/cart.interface';
-import { IProduct } from '../../interfaces/product.interface';
+//import { IProduct } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-cart',
@@ -19,11 +19,11 @@ export class CartComponent implements OnInit {
     this.cart = this._cartService.getCart();
   }
 
-  public incrementItem(product: IProduct): void {
+  public incrementItem(product: ICart): void {
     this._cartService.incrementInCart(product);
   }
 
-  public decrementItem(product: IProduct): void {
+  public decrementItem(product: ICart): void {
     this._cartService.decrementInCart(product);
   }
 

@@ -19,17 +19,21 @@ export class CartService {
     this.cart.splice(index, 1, {...element, amount: element.amount + 1});
   }
 
-  public incrementInCart(cartItem: IProduct): void{
+  public incrementInCart(cartItem: ICart): void{
     const index: number = this.cart.findIndex((item: ICart) => item.id === cartItem.id);
     const element: ICart = this.cart[index];
     this.cart.splice(index, 1, {...element, amount: element.amount + 1});
   }
 
-  public decrementInCart(product: IProduct):void{
+  public decrementInCart(product: ICart):void{
     const index: number = this.cart.findIndex((item: ICart) => item.id === product.id);
     const element: ICart = this.cart[index];
     if(element.amount){
-      this.cart.splice(index, 1, {...element, amount: element.amount - 1});
+      if(element.amount === 1){
+        this.cart.splice(index, 1, {...element, amount: 1});
+      }else{
+        this.cart.splice(index, 1, {...element, amount: element.amount - 1});
+      }
     }
   }
 
